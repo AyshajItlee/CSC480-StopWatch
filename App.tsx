@@ -63,17 +63,19 @@ const startStop = () => {
     setLaps(laps.filter((_, i) => i !== index));
   };
 
-  const formatTime = (ms: number) => {
-    const hours = Math.floor(ms / 3600000);
-    const minutes = Math.floor((ms % 3600000) / 60000);
-    const seconds = Math.floor((ms % 60000) / 1000);
+const formatTime = (ms: number) => {
+  const hours = Math.floor(ms / 3600000);
+  const minutes = Math.floor((ms % 3600000) / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  const milliseconds = Math.floor((ms % 1000) / 10); // shows 2-digit milliseconds
 
-    const hh = hours.toString().padStart(2, "0");
-    const mm = minutes.toString().padStart(2, "0");
-    const ss = seconds.toString().padStart(2, "0");
+  const hh = hours.toString().padStart(2, "0");
+  const mm = minutes.toString().padStart(2, "0");
+  const ss = seconds.toString().padStart(2, "0");
+  const msFormatted = milliseconds.toString().padStart(2, "0");
 
-    return `${hh}:${mm}:${ss}`;
-  };
+  return `${hh}:${mm}:${ss}.${msFormatted}`;
+};
 
   const spin = spinValue.interpolate({
     inputRange: [0, 1],
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
   },
 
   timer: {
-    fontSize: Math.min(width * 0.18, 90),
+    fontSize: Math.min(width * 0.18, 80),
     textAlign: 'center',
     color: 'white',
     fontWeight: 'bold',
