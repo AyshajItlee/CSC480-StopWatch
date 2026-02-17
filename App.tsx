@@ -74,7 +74,7 @@ const formatTime = (ms: number) => {
   const ss = seconds.toString().padStart(2, "0");
   const msFormatted = milliseconds.toString().padStart(2, "0");
 
-  return `${hh}:${mm}:${ss}.${msFormatted}`;
+  return `${hh}:${mm}:${ss}:${msFormatted}`;
 };
 
   const spin = spinValue.interpolate({
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
 
   timer: {
-    fontSize: Math.min(width * 0.18, 80),
+    fontSize: Math.min(width * 0.15, 55),
     textAlign: 'center',
     color: 'white',
     fontWeight: 'bold',
